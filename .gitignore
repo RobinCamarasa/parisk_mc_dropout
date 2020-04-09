@@ -1,0 +1,27 @@
+# Pycharm cache
+.idea
+
+# Python cache
+*.pyc
+*__pycache__*
+
+# Pytest cache
+.pytest_cache
+
+# Django migrations
+*migrations
+
+# Tox cache
+.tox
+
+# Pip install cache
+*egg-info
+
+# Test
+test
+
+# Sphinx compiled code
+doc/build/doctrees/*
+
+# Virtual environment
+##__NAME__##_env/*
