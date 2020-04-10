@@ -9,7 +9,7 @@
 
 **Date** : 2020-03-23
 
-**Project** : ##__NAME__##
+**Project** : parisk_mc_dropout
 
 **Code that creates a module out of the the code**
 
@@ -49,17 +49,17 @@ try:
         requirements = [
             dependency
             for dependency in requirements_handler.readlines()
-            if not '##__NAME__##' in dependency
+            if not 'parisk_mc_dropout' in dependency
         ]
 except:
     requirements=[]
 
 setup(
-    name='##__NAME__##',
+    name='parisk_mc_dropout',
     author='Robin Camarasa',
     version=version,
     packages=find_packages(),
-    description='##__DESCRIPTION__##',
+    description='Scripts describing the mc dropout experiments',
     long_description=long_description,
     install_requires=requirements,
     author_email='r.camarasa@erasmusmc.nl',

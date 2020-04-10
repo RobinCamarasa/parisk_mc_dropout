@@ -1,6 +1,6 @@
-# ##__NAME__##
+# parisk_mc_dropout
 
-**##__NAME__## is a project that ##__DESCRIPTION__##**
+**parisk_mc_dropout is a project that Scripts describing the mc dropout experiments**
 
 ## Requirements
 
@@ -13,8 +13,8 @@ To use this package you need :
 
 1. (optional) Create and load a virtualenv
 2. Clone this repository 
-``` $ git clone ##__GITURL__## ```
-3. Go to the repository ```$ cd ##__NAME__## ```
+``` $ git clone https://github.com/RobinCamarasa/parisk_mc_dropout ```
+3. Go to the repository ```$ cd parisk_mc_dropout ```
 4. Install package ```$ pip install --no-cache-dir ./```
 
 ## Contributing

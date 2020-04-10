@@ -9,9 +9,9 @@
 
 **Date** : 2020-03-18
 
-**Project** : ##__NAME__##
+**Project** : parisk_mc_dropout
 
 **Module that contains scripting utils**
 
 """
-MODULE=['##__NAME__##', 'scripting']
+MODULE=['parisk_mc_dropout', 'scripting']

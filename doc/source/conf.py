@@ -7,8 +7,8 @@ sys.path.insert(
     )))
 )
 
-project = '##__NAME__##'
-author = '##__AUTHOR__##'
+project = 'parisk_mc_dropout'
+author = 'Robin Camarasa'
 copyright = '{}, {}'.format(
     datetime.datetime.now().year,
     author

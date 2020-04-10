@@ -9,10 +9,10 @@
 
 **Date** : 2020-03-23
 
-**Project** : ##__NAME__##
+**Project** : parisk_mc_dropout
 
-**Code of the module ##__NAME__##**
+**Code of the module parisk_mc_dropout**
 
 """
 
-MODULE=['##__NAME__##']
+MODULE=['parisk_mc_dropout']

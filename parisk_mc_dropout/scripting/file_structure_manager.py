@@ -9,7 +9,7 @@
 
 **Date** : 2020-03-23
 
-**Project** : ##__NAME__##
+**Project** : parisk_mc_dropout
 
 **File that contains the code related to the file structure management**
 """

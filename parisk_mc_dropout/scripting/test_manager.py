@@ -9,14 +9,14 @@
 
 **Date** : 2020-03-23
 
-**Project** : ##__NAME__##
+**Project** : parisk_mc_dropout
 
 **File that contains the codes related to file management for test**
 """
 import os
 from typing import Callable
 
-from ##__NAME__##.scripting.file_structure_manager import get_dir_structure, create_error_less_directory
+from parisk_mc_dropout.scripting.file_structure_manager import get_dir_structure, create_error_less_directory
 
 
 def set_test_folders(
