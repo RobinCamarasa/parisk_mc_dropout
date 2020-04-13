@@ -20,7 +20,7 @@ import click
 from data_science_framework.data_spy.options.option_manager import parameters_to_options, \
     initialize_experiment_parameters
 from data_science_framework.data_spy.loggers.experiment_loggers import global_logger
-from data_science_framework.pytorch_utils.models import MCUnet2Axis
+from data_science_framework.pytorch_utils.models import GMCUnet2Axis
 from data_science_framework.pytorch_utils.trainer import VanillaTrainer
 from data_science_framework.pytorch_utils.optimizer import AdadeltaOptimizer
 from data_science_framework.pytorch_utils.losses import DiceLoss, BinaryCrossEntropyLoss, \
@@ -59,9 +59,9 @@ EXPERIMENT_OBJECTS = {
         shape_x=128, shape_y=128, shape_z=16,
         centered=True, background=False
     ),
-    'model': MCUnet2Axis(
+    'model': GMCUnet2Axis(
         in_channels=5, out_channels=3, depth=3,
-        n_features=16, activation='softmax', dropout=0.1
+        n_features=16, activation='softmax', dropout=0.3
     ),
     'optimizer': AdadeltaOptimizer(),
     'loss': DiceLoss(),
