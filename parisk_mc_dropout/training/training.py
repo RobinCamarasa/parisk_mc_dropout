@@ -39,6 +39,7 @@ from torch.utils.tensorboard import SummaryWriter
 
 from parisk_mc_dropout.training import PariskDataset, PariskDataSplitter
 from parisk_mc_dropout.settings import RESULT_ROOT, PROJECT_ROOT, DATA_ROOT, DEVICE
+import pickle
 
 
 # Defining the objects required for your experiments
@@ -64,9 +65,8 @@ EXPERIMENT_OBJECTS = {
     ),
     'optimizer': AdadeltaOptimizer(),
     'loss': DiceLoss(),
-    'trainer': VanillaTrainer(nb_epochs=300),
+    'trainer': VanillaTrainer(nb_epochs=1000),
 }
-
 @click.command()
 @parameters_to_options(
     experiment_objects=EXPERIMENT_OBJECTS
@@ -139,13 +139,6 @@ def main(experiment_folder, **option_values):
         trainning_generator=EXPERIMENT_OBJECTS['traingenerator'],
         validation_generator=EXPERIMENT_OBJECTS['validationgenerator'],
         callbacks= [
-            MetricsWritter(
-                writer=writer,
-                metrics=[
-                    SegmentationDiceMetric(),
-                    # SegmentationBCEMetric()
-                ]
-            ),
             ModelCheckpoint(
                 writer=writer,
                 metric=SegmentationDiceMetric(),
@@ -167,6 +160,13 @@ def main(experiment_folder, **option_values):
     EXPERIMENT_OBJECTS['trainer'].set_optimizer(
         optimizer=AdadeltaOptimizer()
     )
+
+    # Save objects
+    for key, value in EXPERIMENT_OBJECTS.items():
+        if 'generator' in key:
+            path = os.path.join(experiment_folder, '{}.pkl'.format(key))
+            with open(path, 'wb') as handle:
+                pickle.dump(value, handle)
 
     # Run training
     print('- Run training')
