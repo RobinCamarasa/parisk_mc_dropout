@@ -1,6 +1,9 @@
 #!/bin/sh
 
-for i in `seq 0 3`
+for validation in 0 1 2 3
 do
-    python /mnt/D2C8C54FC8C53291/parisk_projects/parisk_mc_dropout/parisk_mc_dropout/parisk_mc_dropout/training/training.py --model-dropout 0.1 --datasplitter-validation $i
+    for dropout in 0.1 0.3 0.5
+    do
+        python training.py --model-dropout $dropout --datasplitter-validation $validation --model-dropout-type gaussian
+    done
 done
