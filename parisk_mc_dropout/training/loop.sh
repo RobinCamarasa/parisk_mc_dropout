@@ -1,6 +1,6 @@
 #!/bin/sh
 
-for validation in 0 1 2 3
+for validation in 0
 do
     for dropout in 0.1 0.3 0.5
     do
