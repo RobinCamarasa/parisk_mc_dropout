@@ -15,15 +15,16 @@ class PariskDataSplitter:
     :param data_id: Version of your data
     :param nsplit: Number of split of the dataset
     :param validation: List of the subsplit used for validation
+    :param training: List of the subsplit used for training
     :param test: List of the subsplit used for test
     :param centers: Contains the list of the hospital center under study
     """
     def __init__(
-            self, validation: int = 3, training: int = 0
+            self, validation: int = 3, nb_training: int = 69
     ):
         # Initialize parameters
         self.validation = validation
-        self.training = training
+        self.nb_training = nb_training
 
     def process_parameters(self) -> None:
         """
@@ -32,7 +33,7 @@ class PariskDataSplitter:
         :return: None
         """
         # Get data ressources
-        self.train = [self.training]
+        self.train = [i for i in range(4) if i != self.validation]
 
 
     @data_saver
@@ -46,8 +47,9 @@ class PariskDataSplitter:
         df = pd.read_csv(
             os.path.join(DATA_ROOT, 'parisk_data_split.csv')
         )
-
-        train_df = df[df.subset.isin(self.train)]
+        train_df = df[df.subset.isin(self.train)].sample(
+            n=self.nb_training, random_state=1
+        )
         validation_df = df[df.subset == self.validation]
         return {
             'train': train_df,

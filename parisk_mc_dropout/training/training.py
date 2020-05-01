@@ -45,7 +45,7 @@ import pickle
 # Defining the objects required for your experiments
 EXPERIMENT_OBJECTS = {
     'datasplitter': PariskDataSplitter(),
-    'traingenerator': PariskDataset(batchsize=3),
+    'traingenerator': PariskDataset(batchsize=1),
     'validationgenerator': PariskDataset(batchsize=1),
     'normalization': SegmentationNormalization(),
     'flip': SegmentationFlip(
