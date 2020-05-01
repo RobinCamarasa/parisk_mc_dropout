@@ -19,10 +19,11 @@ class PariskDataSplitter:
     :param centers: Contains the list of the hospital center under study
     """
     def __init__(
-            self, validation: list = 3
+            self, validation: int = 3, training: int = 0
     ):
         # Initialize parameters
         self.validation = validation
+        self.training = training
 
     def process_parameters(self) -> None:
         """
@@ -31,7 +32,7 @@ class PariskDataSplitter:
         :return: None
         """
         # Get data ressources
-        self.train = [i for i in range(4) if i != self.validation]
+        self.train = [self.training]
 
 
     @data_saver

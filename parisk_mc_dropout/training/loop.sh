@@ -1,9 +1,11 @@
 #!/bin/sh
 
-for validation in 0
+for training in 0 1 2
 do
-    for dropout in 0.1 0.3 0.5
+    for dropout in 0.1 0.2 0.3 0.4
     do
-        python training.py --model-dropout $dropout --datasplitter-validation $validation --model-dropout-type gaussian
+        python training.py --model-dropout-type classic --model-dropout $dropout --datasplitter-validation 3 --datasplitter-training $training
+        python training.py --model-dropout-type gaussian --model-dropout $dropout --datasplitter-validation 3 --datasplitter-training $training
     done
 done
+

@@ -72,7 +72,7 @@ EXPERIMENT_OBJECTS = {
     experiment_objects=EXPERIMENT_OBJECTS
 )
 @global_logger(
-    folder=os.path.join(RESULT_ROOT, 'training'), tag='training',
+    folder=os.path.join(RESULT_ROOT, 'training_subset'), tag='training',
     project_root=os.path.join(PROJECT_ROOT, 'parisk_mc_dropout')
 )
 def main(experiment_folder, **option_values):
