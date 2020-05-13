@@ -63,7 +63,7 @@ EXPERIMENT_OBJECTS = {
         in_channels=5, out_channels=3, depth=3,
         n_features=16, activation='softmax', dropout=0.3
     ),
-    'optimizer': AdadeltaOptimizer(),
+    'optimizer': AdadeltaOptimizer(weight_decay=0.0001),
     'loss': DiceLoss(),
     'trainer': VanillaTrainer(nb_epochs=600),
 }
