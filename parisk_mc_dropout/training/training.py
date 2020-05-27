@@ -1,5 +1,5 @@
 """
-**Author** : Robin Camarasa 
+**Author** : Robin Camarasa
 
 **Institution** : Erasmus Medical Center
 
@@ -33,7 +33,7 @@ from data_science_framework.data_augmentation.segmentation_augmentation import \
 from data_science_framework.pytorch_utils.metrics import SegmentationAccuracyMetric,\
     SegmentationDiceMetric, SegmentationBCEMetric
 from data_science_framework.pytorch_utils.callbacks import ModelCheckpoint,\
-        ModelPlotter, MetricsWritter, ConfusionMatrixCallback, DataDisplayer
+        ModelPlotter, MetricsWritter, ConfusionMatrixCallback, DataDisplayer, DropoutRateDisplayer
 
 from torch.utils.tensorboard import SummaryWriter
 
@@ -63,9 +63,9 @@ EXPERIMENT_OBJECTS = {
         in_channels=5, out_channels=3, depth=3,
         n_features=16, activation='softmax', dropout=0.3
     ),
-    'optimizer': AdadeltaOptimizer(weight_decay=0.0001),
+    'optimizer': AdadeltaOptimizer(weight_decay=0),
     'loss': DiceLoss(),
-    'trainer': VanillaTrainer(nb_epochs=600),
+    'trainer': VanillaTrainer(nb_epochs=600, lambda_kl=0.01),
 }
 @click.command()
 @parameters_to_options(
@@ -150,6 +150,9 @@ def main(experiment_folder, **option_values):
             ),
             DataDisplayer(writer=writer),
             ConfusionMatrixCallback(
+                writer=writer
+            ),
+            DropoutRateDisplayer(
                 writer=writer
             )
         ]
